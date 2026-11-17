@@ -118,7 +118,7 @@ textarea::placeholder, input::placeholder { color: var(--muted); opacity: 1; }
       Smart <b>Growth</b>
     </div>
     <h1>Site novo do <span>Instituto Satori</span></h1>
-    <p>Adriana, aqui ficam as informações que precisamos para montar o site. <strong>Pode preencher aos poucos:</strong> o que você escreve fica salvo neste aparelho. Quando terminar, toque em <strong>Enviar no WhatsApp</strong> e escolha o grupo da Smart Growth.</p>
+    <p>Adriana, aqui ficam as informações que precisamos para montar o site. <strong>Pode preencher aos poucos:</strong> o que você escreve fica salvo neste aparelho. Quando terminar, toque em <strong>Enviar no WhatsApp</strong> e escolha o grupo <strong>Smart Growth - Instituto Satori</strong>.</p>
     <div class="prog" aria-live="polite">
       <div class="prog-barras" id="barras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="prog-txt" id="progTxt">0 de 7 partes</div>
@@ -190,7 +190,7 @@ textarea::placeholder, input::placeholder { color: var(--muted); opacity: 1; }
 
 <div class="barra">
   <div class="wrap">
-    <div class="salvo" id="salvo">O que você escreve fica salvo neste aparelho.</div>
+    <div class="salvo" id="salvo">No WhatsApp, escolha o grupo Smart Growth - Instituto Satori.</div>
     <button class="btn" type="button" id="copiar">Copiar respostas</button>
     <a class="btn pri" id="enviar" href="https://wa.me/" target="_blank" rel="noopener">Enviar no WhatsApp</a>
   </div>
@@ -256,7 +256,7 @@ textarea::placeholder, input::placeholder { color: var(--muted); opacity: 1; }
     campos.forEach((c) => { d[c.id] = c.type === 'checkbox' ? c.checked : c.value; });
     clearTimeout(t);
     t = setTimeout(() => {
-      try { localStorage.setItem(CHAVE, JSON.stringify(d)); salvo.textContent = 'Salvo neste aparelho às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + '.'; }
+      try { localStorage.setItem(CHAVE, JSON.stringify(d)); salvo.textContent = 'Salvo às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + '. No WhatsApp, escolha o grupo Smart Growth - Instituto Satori.'; }
       catch (e) { salvo.textContent = 'Este navegador não deixa salvar. Envie antes de fechar a página.'; }
     }, 400);
     progresso();
