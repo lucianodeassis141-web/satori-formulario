@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Site novo Instituto Satori</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+body{margin:0}
+/* Layout: uma coluna de leitura (720px), cabeçalho ônix da Smart Growth, 7 partes em sequência, barra de envio fixa embaixo. */
+:root {
+  --bg: #F6F5F2;        /* gelo */
+  --surface: #FFFFFF;
+  --ink: #101217;       /* ônix */
+  --muted: #555A64;
+  --line: #E3E1DB;
+  --field: #FBFAF8;
+  --accent: #FA7715;    /* laranja SG */
+  --accent-ink: #C2470A;
+  --accent-soft: rgba(250,119,21,.12);
+  --hero: #101217;
+  --hero-ink: #F6F5F2;
+  --hero-muted: #A4A8B1;
+  --ok: #1E8E5A;
+  --f-txt: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-num: 'Space Grotesk', 'Figtree', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101217; --surface: #1B1E25; --ink: #F6F5F2; --muted: #A4A8B1; --line: #2C3038;
+    --field: #15171D; --accent: #FA7715; --accent-ink: #FF9A4A; --accent-soft: rgba(250,119,21,.16);
+    --hero: #0A0B0F; --hero-ink: #F6F5F2; --hero-muted: #A4A8B1; --ok: #3CC487; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101217; --surface: #1B1E25; --ink: #F6F5F2; --muted: #A4A8B1; --line: #2C3038;
+  --field: #15171D; --accent: #FA7715; --accent-ink: #FF9A4A; --accent-soft: rgba(250,119,21,.16);
+  --hero: #0A0B0F; --hero-ink: #F6F5F2; --hero-muted: #A4A8B1; --ok: #3CC487; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-txt); font-size: 17px; line-height: 1.55; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* cabeçalho */
+.hero { background: var(--hero); color: var(--hero-ink); position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; right: -180px; top: -200px; width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(250,119,21,.35), rgba(250,119,21,0)); pointer-events: none; }
+.hero .wrap { padding-block: 40px 36px; position: relative; z-index: 1; display: grid; gap: 18px; }
+.marca { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; letter-spacing: .01em; }
+.marca svg { width: 34px; height: 21px; }
+.marca b { color: var(--accent); font-weight: 700; }
+.hero h1 { font-size: clamp(34px, 7vw, 54px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 900; margin: 0; text-wrap: balance; }
+.hero h1 span { color: #FA7715; }
+.hero p { margin: 0; color: var(--hero-muted); max-width: 56ch; }
+.hero p strong { color: var(--hero-ink); font-weight: 600; }
+
+/* progresso */
+.prog { display: grid; gap: 8px; }
+.prog-barras { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.prog-barras i { height: 6px; border-radius: 3px; background: rgba(246,245,242,.16); transition: background .3s; }
+.prog-barras i.on { background: linear-gradient(90deg, #FF9A1F, #F26A06); }
+.prog-txt { font-family: var(--f-num); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--hero-muted); }
+
+/* partes */
+main .wrap { padding-block: 28px 140px; display: grid; gap: 22px; }
+.parte { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px clamp(18px, 4vw, 30px); display: grid; gap: 20px; }
+.parte-topo { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.num { font-family: var(--f-num); font-weight: 700; font-size: 40px; line-height: 1; color: var(--accent-ink); letter-spacing: -0.04em; min-width: 2ch; }
+.parte h2 { margin: 2px 0 4px; font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; text-wrap: balance; }
+.parte .sub { margin: 0; color: var(--muted); font-size: 15.5px; }
+.parte.feita .num::after { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); margin-left: 6px; vertical-align: top; }
+
+.campo { display: grid; gap: 7px; min-width: 0; }
+.campo label { font-weight: 700; font-size: 16px; }
+.campo .dica { color: var(--muted); font-size: 14.5px; margin-top: -4px; }
+textarea, input[type="text"] {
+  width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--field);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; resize: vertical; transition: border-color .15s, box-shadow .15s;
+}
+textarea { min-height: 96px; }
+textarea:focus, input[type="text"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+textarea::placeholder, input::placeholder { color: var(--muted); opacity: 1; }
+
+.check { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border-radius: 12px; padding: 14px 16px; cursor: pointer; }
+.check input { width: 22px; height: 22px; accent-color: var(--accent); margin: 2px 0 0; flex: 0 0 auto; }
+.check span { min-width: 0; }
+.check b { display: block; font-weight: 700; }
+.check small { color: var(--muted); font-size: 14.5px; }
+
+/* barra de envio */
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--surface); border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom, 0px); box-shadow: 0 -10px 30px rgba(16,18,23,.08); }
+.barra .wrap { padding-block: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.salvo { font-size: 13.5px; color: var(--muted); flex: 1 1 160px; min-width: 0; }
+.btn { font: inherit; font-weight: 700; font-size: 16px; border-radius: 999px; padding: 12px 20px; cursor: pointer; border: 1.5px solid var(--line);
+  background: transparent; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn:focus-visible, .check:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
+.btn.pri { background: var(--accent); border-color: var(--accent); color: #101217; }
+.btn.pri:hover { background: #FF8A2E; }
+.btn:hover { border-color: var(--accent); }
+
+.fim { text-align: center; color: var(--muted); font-size: 15px; padding: 6px 0 0; }
+@media (max-width: 480px) { .barra .btn { flex: 1 1 auto; justify-content: center; } .salvo { flex-basis: 100%; text-align: center; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="marca" aria-label="Smart Growth">
+      <svg viewBox="0 0 34 21" aria-hidden="true"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#FF9A1F"/><stop offset="1" stop-color="#F26A06"/></linearGradient></defs>
+        <path d="M9 2h22l-3 5H11a2 2 0 0 0 0 3.5h14a5 5 0 0 1 0 10H3l3-5h18a1.2 1.2 0 0 0 0-2.5H10A6 6 0 0 1 9 2z" fill="url(#g)"/></svg>
+      Smart <b>Growth</b>
+    </div>
+    <h1>Site novo do <span>Instituto Satori</span></h1>
+    <p>Adriana, aqui ficam as informações que precisamos para montar o site. <strong>Pode preencher aos poucos:</strong> o que você escreve fica salvo neste aparelho. Quando terminar, toque em <strong>Enviar no WhatsApp</strong> e escolha o grupo da Smart Growth.</p>
+    <div class="prog" aria-live="polite">
+      <div class="prog-barras" id="barras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="prog-txt" id="progTxt">0 de 7 partes</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <form id="form" novalidate>
+
+      <section class="parte" data-parte="1">
+        <div class="parte-topo"><div class="num">01</div><div><h2>Sobre você e o instituto</h2><p class="sub">Isso vira a página "Quem somos". É onde a pessoa decide se confia em você.</p></div></div>
+        <div class="campo"><label for="historia">Sua história com a respiração</label><div class="dica">Como começou, o que mudou na sua vida, por que criou o instituto.</div><textarea id="historia" name="Sua história com a respiração"></textarea></div>
+        <div class="campo"><label for="formacao">Formação e certificados</label><div class="dica">Cursos, escolas, anos de prática.</div><textarea id="formacao" name="Formação e certificados"></textarea></div>
+        <div class="campo"><label for="missao">A missão do instituto</label><div class="dica">Em poucas frases: o que vocês querem mudar na vida de quem chega.</div><textarea id="missao" name="Missão do instituto"></textarea></div>
+        <label class="check" for="fotos"><input type="checkbox" id="fotos" name="Fotos enviadas no grupo"><span><b>Mandei as fotos no grupo</b><small>Fotos suas em boa qualidade: retrato, atendendo, dando aula e o espaço. Mande como documento para não perder qualidade.</small></span></label>
+      </section>
+
+      <section class="parte" data-parte="2">
+        <div class="parte-topo"><div class="num">02</div><div><h2>O que você oferece</h2><p class="sub">Cada serviço vira um bloco no site, com botão para agendar ou comprar.</p></div></div>
+        <div class="campo"><label for="servicos">Todos os serviços</label><div class="dica">Um por linha. Exemplo: mentoria, sessão individual, grupo, curso, palestra para empresas.</div><textarea id="servicos" name="Serviços"></textarea></div>
+        <div class="campo"><label for="como">Para quem é cada um e como funciona</label><div class="dica">Duração, número de encontros, online ou presencial.</div><textarea id="como" name="Como cada serviço funciona"></textarea></div>
+        <div class="campo"><label for="precos">Preços</label><div class="dica">Pode escrever "sob consulta" no que não quiser mostrar.</div><textarea id="precos" name="Preços"></textarea></div>
+        <div class="campo"><label for="destaque">Qual você quer vender mais agora?</label><input type="text" id="destaque" name="Serviço em destaque"></div>
+      </section>
+
+      <section class="parte" data-parte="3">
+        <div class="parte-topo"><div class="num">03</div><div><h2>Para quem é</h2><p class="sub">Para o texto do site falar direto com quem precisa de você.</p></div></div>
+        <div class="campo"><label for="publico">Quem é o seu público principal</label><div class="dica">Idade, momento de vida, profissão. Exemplo: estudantes antes de prova, pessoas com ansiedade, executivos.</div><textarea id="publico" name="Público principal"></textarea></div>
+        <div class="campo"><label for="dores">As dores que essas pessoas trazem</label><div class="dica">Do jeito que você explica no atendimento. As frases que elas mesmas falam ajudam muito.</div><textarea id="dores" name="Dores do público"></textarea></div>
+      </section>
+
+      <section class="parte" data-parte="4">
+        <div class="parte-topo"><div class="num">04</div><div><h2>Prova</h2><p class="sub">Depoimento e número real são o que mais convencem quem ainda não te conhece.</p></div></div>
+        <label class="check" for="depo"><input type="checkbox" id="depo" name="Depoimentos enviados no grupo"><span><b>Mandei os depoimentos no grupo</b><small>Com nome e foto. Print de WhatsApp autorizado pela pessoa também serve.</small></span></label>
+        <div class="campo"><label for="numeros">Números reais</label><div class="dica">Só se tiver: pessoas atendidas, turmas, anos de trabalho.</div><textarea id="numeros" name="Números reais"></textarea></div>
+        <div class="campo"><label for="midia">Mídia, eventos e parcerias</label><div class="dica">Entrevistas, palestras, empresas atendidas. Com link, se tiver.</div><textarea id="midia" name="Mídia, eventos e parcerias"></textarea></div>
+      </section>
+
+      <section class="parte" data-parte="5">
+        <div class="parte-topo"><div class="num">05</div><div><h2>Conteúdo de apoio</h2><p class="sub">Responde as dúvidas antes da pessoa precisar perguntar.</p></div></div>
+        <div class="campo"><label for="faq">Perguntas que sempre te fazem</label><div class="dica">Uma por linha. Se quiser, já com a resposta.</div><textarea id="faq" name="Perguntas frequentes"></textarea></div>
+        <div class="campo"><label for="videos">Vídeos e posts seus que podem entrar no site</label><div class="dica">Cole os links.</div><textarea id="videos" name="Vídeos e posts"></textarea></div>
+        <div class="campo"><label for="gratis">Material gratuito</label><div class="dica">Pensa em oferecer algo de graça para captar contatos, como um e-book ou um áudio guiado? Já tem algum pronto?</div><textarea id="gratis" name="Material gratuito"></textarea></div>
+      </section>
+
+      <section class="parte" data-parte="6">
+        <div class="parte-topo"><div class="num">06</div><div><h2>Contato</h2><p class="sub">Para os botões do site levarem direto até você.</p></div></div>
+        <div class="campo"><label for="whats">WhatsApp do instituto</label><input type="text" id="whats" name="WhatsApp" inputmode="tel" placeholder="(00) 00000-0000"></div>
+        <div class="campo"><label for="email">E-mail</label><input type="text" id="email" name="E-mail" inputmode="email"></div>
+        <div class="campo"><label for="insta">Instagram</label><input type="text" id="insta" name="Instagram" placeholder="@"></div>
+        <div class="campo"><label for="endereco">Endereço</label><div class="dica">Só se atende presencial.</div><input type="text" id="endereco" name="Endereço"></div>
+        <div class="campo"><label for="agenda">Link de agenda ou de pagamento</label><div class="dica">Se você já usa algum.</div><input type="text" id="agenda" name="Link de agenda ou pagamento"></div>
+        <div class="campo"><label for="dominio">Domínio e hospedagem</label><div class="dica">Onde o site atual está hospedado e quem tem o acesso. Não escreva senha aqui: isso a gente combina no privado.</div><textarea id="dominio" name="Domínio e hospedagem"></textarea></div>
+      </section>
+
+      <section class="parte" data-parte="7">
+        <div class="parte-topo"><div class="num">07</div><div><h2>O seu gosto</h2><p class="sub">Para o site ficar com a sua cara desde a primeira versão.</p></div></div>
+        <div class="campo"><label for="refs">2 ou 3 sites que você acha bonitos</label><div class="dica">Cole os links. Pode ser de qualquer área.</div><textarea id="refs" name="Sites de referência"></textarea></div>
+        <div class="campo"><label for="naogosta">O que você não gosta no site de hoje</label><textarea id="naogosta" name="O que não gosta no site atual"></textarea></div>
+        <div class="campo"><label for="logo">Logo e cores</label><div class="dica">Continuam como estão ou quer mudar?</div><textarea id="logo" name="Logo e cores"></textarea></div>
+      </section>
+
+      <p class="fim">Faltou alguma coisa ou ficou em dúvida? Pode mandar áudio no grupo, nós transformamos em texto.</p>
+    </form>
+  </div>
+</main>
+
+<div class="barra">
+  <div class="wrap">
+    <div class="salvo" id="salvo">O que você escreve fica salvo neste aparelho.</div>
+    <button class="btn" type="button" id="copiar">Copiar respostas</button>
+    <a class="btn pri" id="enviar" href="https://wa.me/" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+  </div>
+</div>
+
+<script>
+(() => {
+  const CHAVE = 'satori-form-v1';
+  const form = document.getElementById('form');
+  const campos = [...form.querySelectorAll('textarea, input')];
+  const partes = [...form.querySelectorAll('.parte')];
+  const salvo = document.getElementById('salvo');
+  const enviar = document.getElementById('enviar');
+
+  const ler = () => { try { return JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { return {}; } };
+  const dados = ler();
+  campos.forEach((c) => {
+    if (!(c.id in dados)) return;
+    if (c.type === 'checkbox') c.checked = !!dados[c.id]; else c.value = dados[c.id];
+  });
+
+  const preenchido = (c) => c.type === 'checkbox' ? c.checked : c.value.trim() !== '';
+
+  function progresso() {
+    let feitas = 0;
+    partes.forEach((p) => {
+      const cs = [...p.querySelectorAll('textarea, input')];
+      const ok = cs.filter(preenchido).length;
+      const feita = ok >= Math.ceil(cs.length / 2);
+      p.classList.toggle('feita', feita);
+      if (feita) feitas++;
+    });
+    document.querySelectorAll('#barras i').forEach((b, i) => b.classList.toggle('on', i < feitas));
+    document.getElementById('progTxt').textContent = feitas + ' de 7 partes';
+  }
+
+  function montarTexto() {
+    const linhas = ['*Site novo do Instituto Satori*', ''];
+    partes.forEach((p) => {
+      const titulo = p.querySelector('h2').textContent;
+      const num = p.querySelector('.num').textContent;
+      const cs = [...p.querySelectorAll('textarea, input')];
+      const itens = [];
+      cs.forEach((c) => {
+        if (c.type === 'checkbox') { if (c.checked) itens.push(c.name + ': sim'); return; }
+        const v = c.value.trim();
+        if (v) itens.push('_' + c.name + '_\n' + v);
+      });
+      if (!itens.length) return;
+      linhas.push('*' + num + '. ' + titulo + '*');
+      itens.forEach((t) => linhas.push(t));
+      linhas.push('');
+    });
+    if (linhas.length === 2) linhas.push('(ainda sem respostas)');
+    return linhas.join('\n').trim();
+  }
+
+  function atualizarLink() { enviar.href = 'https://wa.me/?text=' + encodeURIComponent(montarTexto()); }
+
+  let t;
+  form.addEventListener('input', () => {
+    const d = {};
+    campos.forEach((c) => { d[c.id] = c.type === 'checkbox' ? c.checked : c.value; });
+    clearTimeout(t);
+    t = setTimeout(() => {
+      try { localStorage.setItem(CHAVE, JSON.stringify(d)); salvo.textContent = 'Salvo neste aparelho às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + '.'; }
+      catch (e) { salvo.textContent = 'Este navegador não deixa salvar. Envie antes de fechar a página.'; }
+    }, 400);
+    progresso();
+    atualizarLink();
+  });
+  form.addEventListener('submit', (e) => e.preventDefault());
+
+  document.getElementById('copiar').addEventListener('click', async (e) => {
+    const texto = montarTexto();
+    const btn = e.currentTarget;
+    try { await navigator.clipboard.writeText(texto); btn.textContent = 'Copiado'; }
+    catch (err) {
+      const ta = document.createElement('textarea'); ta.value = texto; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); btn.textContent = 'Copiado'; } catch (x) { btn.textContent = 'Não deu para copiar'; }
+      ta.remove();
+    }
+    setTimeout(() => { btn.textContent = 'Copiar respostas'; }, 2200);
+  });
+
+  progresso();
+  atualizarLink();
+})();
+</script>
+</body>
+</html>
